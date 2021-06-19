@@ -19,6 +19,7 @@
 # include <fcntl.h>
 
 char	*strchr(const char *str, int c);
+int		is_digit(char *str);
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);

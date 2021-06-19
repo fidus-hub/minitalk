@@ -15,16 +15,32 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
+void	ft_error(int i)
+{
+	if (i == 1)
+		ft_putstr_fd("Error\n Please Check Your Input And/Or Your Pid\n", 2);
+	if (i == 2)
+		ft_putstr_fd("error\nThis process does not exist\n", 2);
+	exit(EXIT_FAILURE);
+}
+
+void	init(int *i, int *j)
+{
+	*i = 0;
+	*j = 0;
+}
+
 int	main(int ac, char **av)
 {
 	int	i;
 	int	j;
 	int	ret;
 
-	j = 0;
-	i = 0;
+	init(&i, &j);
 	if (ac != 3)
-		ft_putstr_fd("error\nThe number of arguments is not correct\n", 1);
+		ft_error(1);
+	if (!is_digit(av[1]))
+		ft_error(1);
 	while (av[2][i])
 	{
 		j = 0;
@@ -35,7 +51,7 @@ int	main(int ac, char **av)
 			else
 				ret = kill(ft_atoi(av[1]), SIGUSR2);
 			if (ret == -1)
-				ft_putstr_fd("error\nThis process does not exist\n", 1);
+				ft_error(2);
 			j++;
 		}
 		i++;

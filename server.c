@@ -22,7 +22,7 @@ void	decriptage(int signal_code)
 
 	c += (SIGUSR1 == signal_code) << i;
 	i++;
-	if (i > 7)
+	if (i == 8)
 	{
 		i = 0;
 		write(1, &c, 1);
@@ -34,8 +34,8 @@ int	main(int ac, char **av)
 {
 	if (ac != 1)
 	{
-		ft_putstr_fd("error\nThe number of arguments is not correct\n", 1);
-		exit(0);
+		ft_putstr_fd("error\nThe number of arguments is not correct\n", 2);
+		exit(1);
 	}
 	if (av[0])
 	{

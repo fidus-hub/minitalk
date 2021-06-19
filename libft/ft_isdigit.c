@@ -14,7 +14,21 @@
 
 int	ft_isdigit(int c)
 {
-	if (c >= '0' && c <= '9')
+	if (c >= 0x30 && c <= 0x39)
 		return (1);
 	return (0);
+}
+
+int	is_digit(char *str)
+{
+	unsigned long long	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
